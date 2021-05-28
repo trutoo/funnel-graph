@@ -1,0 +1,82 @@
+{
+  "name": "@trutoo/funnel-graph",
+  "version": "0.0.0",
+  "description": "SVG Funnel Graph TypeScript Library.",
+  "keywords": [
+    "funnel",
+    "chart",
+    "graph",
+    "funnel-chart",
+    "funnel-graph",
+    "svg-funnel-chart",
+    "svg-funnel-graph"
+  ],
+  "author": {
+    "name": "Trutoo AB",
+    "url": "https://www.trutoo.com/"
+  },
+  "license": "MIT",
+  "repository": "https://github.com/trutoo/funnel-graph.git",
+  "bugs": "https://github.com/trutoo/funnel-graph/issues",
+  "contributors": [
+    {
+      "name": "Erik Hughes",
+      "email": "erik.hughes@outlook.com",
+      "url": "https://github.com/swiftwork"
+    }
+  ],
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "browser": "dist/index.umd.min.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/"
+  ],
+  "husky": {
+    "hooks": {
+      "pre-push": "npm run test",
+      "commit-msg": "node tools/commit-msg.js"
+    }
+  },
+  "scripts": {
+    "prebuild": "rimraf dist/*",
+    "build": "rollup -c",
+    "test": "jest",
+    "docs": "typedoc --out docs src/index.ts",
+    "postversion": "npm run build",
+    "release": "semantic-release"
+  },
+  "dependencies": {
+    "tslib": "^2.2.0"
+  },
+  "devDependencies": {
+    "@semantic-release/changelog": "5.0.1",
+    "@semantic-release/exec": "5.0.0",
+    "@semantic-release/github": "7.2.3",
+    "@typescript-eslint/eslint-plugin": "4.25.0",
+    "@typescript-eslint/parser": "4.25.0",
+    "conventional-changelog-angular": "5.0.12",
+    "eslint": "7.27.0",
+    "eslint-config-prettier": "8.3.0",
+    "eslint-plugin-prettier": "3.4.0",
+    "husky": "4.3.8",
+    "jest": "27.0.1",
+    "postcss": "^8.3.0",
+    "postcss-nested": "^5.0.5",
+    "postcss-preset-env": "^6.7.0",
+    "prettier": "2.3.0",
+    "rimraf": "3.0.2",
+    "rollup": "2.50.1",
+    "rollup-plugin-ignore": "^1.0.9",
+    "rollup-plugin-postcss": "^4.0.0",
+    "rollup-plugin-terser": "7.0.2",
+    "rollup-plugin-typescript2": "0.30.0",
+    "semantic-release": "17.4.3",
+    "ts-jest": "27.0.0",
+    "typedoc": "^0.20.36",
+    "typescript": "4.2.4"
+  },
+  "optionalDependencies": {
+    "@types/jest": "26.0.23"
+  }
+}

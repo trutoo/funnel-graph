@@ -1,0 +1,23 @@
+{
+  "docthis.includeMemberOfOnClassMembers": false,
+  "docthis.includeMemberOfOnInterfaceMembers": false,
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2,
+  "eslint.validate": [
+    "javascript",
+    "typescript"
+  ],
+  "files.associations": {
+    ".prettierc": "jsonc",
+    ".releaserc": "jsonc"
+  },
+  "files.insertFinalNewline": true,
+  "html.format.wrapAttributes": "force",
+  "search.exclude": {
+    "**/node_modules": true,
+    "dist": true
+  },
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "git.inputValidationSubjectLength": 72,
+  "tsImportSorter.configuration.wrappingStyle": "prettier"
+}

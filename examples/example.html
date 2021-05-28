@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>SVG Funnel</title>
+  <link rel="stylesheet"
+    type="text/css"
+    href="../dist/index.css">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon"
+    type="image/png"
+    href="favicon.png" />
+  <style>
+    html,
+    body {
+      min-height: 100%;
+    }
+
+    body {
+      margin: 0;
+      background: #f7f4f0;
+    }
+
+    .funnel {
+      margin: 24px auto;
+    }
+
+    .flex {
+      display: flex;
+    }
+
+    .method-buttons {
+      display: flex;
+      justify-content: center;
+      margin-top: 48px;
+    }
+
+    button {
+      margin-left: 8px;
+      margin-right: 8px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="flex">
+    <div class="funnel">
+    </div>
+  </div>
+
+  <div class="method-buttons">
+    <button id="makeVertical">Make Vertical</button>
+    <button id="makeHorizontal">Make Horizontal</button>
+    <button id="toggleDirection">Toggle Direction</button>
+    <button id="gradientMakeVertical">Gradient Make Vertical</button>
+    <button id="gradientMakeHorizontal">Gradient Make Horizontal</button>
+    <button id="gradientToggleDirection">Gradient Toggle Direction</button>
+    <button id="useData1">Use DataSet 1</button>
+    <button id="useData2">Use DataSet 2</button>
+    <button id="useData3">Use DataSet 3</button>
+    <button id="useData4">Use DataSet 4</button>
+  </div>
+
+  <script src="../dist/index.umd.js"></script>
+  <script>
+
+    var dataExample1 = {
+      values: [11000, 3000, 240]
+    };
+
+    var dataExample2 = {
+      labels: ['Impressions 2', 'Add To Cart 2', 'Buy 2'],
+      values: [12000, 5700, 360]
+    };
+
+    var dataExample3 = {
+      labels: ['Impressions', 'Add To Cart', 'Buy'],
+      subLabels: ['Direct', 'Social Media', 'Ads'],
+      values: [
+        [3500, 2500, 6500],
+        [3300, 1400, 1000],
+        [600, 200, 130]
+      ],
+    };
+
+    var dataExample4 = {
+      labels: ['Impressions', 'Add To Cart', 'Buy', 'Refund'],
+      subLabels: ['Organic', 'Direct', 'Social Media', 'Ads', 'Something 1', 'Something 2', 'Something 3', 'Something 4'],
+      values: [
+        [3000, 3000, 3000, 3000, 3000, 3500, 2500, 6500],
+        [2000, 2000, 2000, 2000, 2000, 3300, 1400, 1000],
+        [1500, 1500, 1500, 1500, 1500, 2000, 600, 130],
+        [1000, 1000, 1000, 1000, 1000, 300, 100, 70],
+      ],
+    };
+
+    var graph = new fg.FunnelGraph({
+      container: '.funnel',
+      gradientDirection: 'horizontal',
+      data: dataExample3,
+      displayPercent: true,
+      direction: 'horizontal',
+      width: 800,
+      height: 300,
+      subLabelValue: 'raw'
+    });
+
+    graph.draw();
+
+    // direction methods
+    document.querySelector('#makeVertical').addEventListener('click', function () {
+      graph.setWidth(300);
+      graph.setHeight(400);
+      graph.makeVertical();
+    });
+
+    document.querySelector('#makeHorizontal').addEventListener('click', function () {
+      graph.setWidth(800);
+      graph.setHeight(300);
+      graph.makeHorizontal();
+    });
+
+    document.querySelector('#toggleDirection').addEventListener('click', function () {
+      graph.direction === 'horizontal' ? document.querySelector('#makeVertical').click() :
+        document.querySelector('#makeHorizontal').click();
+    });
+
+    // gradient methods
+    document.querySelector('#gradientMakeVertical').addEventListener('click', function () {
+      graph.gradientMakeVertical();
+    });
+
+    document.querySelector('#gradientMakeHorizontal').addEventListener('click', function () {
+      graph.gradientMakeHorizontal();
+    });
+
+    document.querySelector('#gradientToggleDirection').addEventListener('click', function () {
+      graph.gradientToggleDirection();
+    });
+
+    document.querySelector('#useData1').addEventListener('click', function () {
+      graph.updateData(dataExample1);
+    });
+
+    document.querySelector('#useData2').addEventListener('click', function () {
+      graph.updateData(dataExample2);
+    });
+
+    document.querySelector('#useData3').addEventListener('click', function () {
+      graph.updateData(dataExample3);
+    });
+
+    document.querySelector('#useData4').addEventListener('click', function () {
+      graph.updateData(dataExample4);
+    });
+
+  </script>
+</body>
+
+</html>
