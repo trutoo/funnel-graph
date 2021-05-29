@@ -3,6 +3,7 @@ module.exports = {
   transform: {
     '^.+\\.ts$': 'ts-jest',
   },
+  testEnvironment: 'jsdom',
   moduleDirectories: ['node_modules', 'src'],
   collectCoverage: true,
   collectCoverageFrom: ['src/**/*.ts', '!src/**/*.d.ts'],

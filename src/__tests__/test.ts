@@ -1,6 +1,7 @@
 /* eslint-disable no-undef */
 
 import assert from 'assert';
+import { FunnelDataLayered } from 'lib/types';
 
 import { areEqual, generateLegendBackground } from '../lib/dom';
 import { FunnelGraph } from '../lib/graph';
@@ -119,7 +120,7 @@ describe('Add tests for equality method', () => {
 });
 
 describe('Add tests for paths', () => {
-  const data = {
+  const data: FunnelDataLayered = {
     labels: ['Impressions', 'Add To Cart', 'Buy'],
     subLabels: ['Direct', 'Social Media', 'Ads', 'Other'],
     colors: [['#FFB178', '#FF78B1', '#FF3C8E'], ['#A0BBFF', '#EC77FF'], ['#A0F9FF', '#B377FF'], '#E478FF'],

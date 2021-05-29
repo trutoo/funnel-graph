@@ -11,7 +11,7 @@ export type FunnelData = {
 export type FunnelDataLayered = {
   labels: string[];
   subLabels: string[];
-  colors: string[] | string[][];
+  colors: (string | string[])[];
   values: number[][];
 };
 
