@@ -1,7 +1,7 @@
 :root {
-  --text: #003f5c;
-  --primary: #a05195;
-  --accent: #f95d6a;
+  --text: MidnightBlue;
+  --primary: MidnightBlue;
+  --accent: Crimson;
   --backdrop: rgba(0, 0, 0, 0.75);
   --backdrop-text: #ffffff;
 }

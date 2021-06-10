@@ -1,9 +1,9 @@
 import { roundPoint } from './number';
 
-const createCurves = (x1: number, y1: number, x2: number, y2: number) =>
+export const createCurves = (x1: number, y1: number, x2: number, y2: number) =>
   ` C${roundPoint((x2 + x1) / 2)},${y1} ` + `${roundPoint((x2 + x1) / 2)},${y2} ${x2},${y2}`;
 
-const createVerticalCurves = (x1: number, y1: number, x2: number, y2: number) =>
+export const createVerticalCurves = (x1: number, y1: number, x2: number, y2: number) =>
   ` C${x1},${roundPoint((y2 + y1) / 2)} ` + `${x2},${roundPoint((y2 + y1) / 2)} ${x2},${y2}`;
 
 /*
@@ -24,7 +24,7 @@ const createVerticalCurves = (x1: number, y1: number, x2: number, y2: number) =>
     Points for path "B" are passed as the YNext param.
  */
 
-const createPath = (X: number[], Y: number[], YNext: number[]) => {
+export const createPath = (X: number[], Y: number[], YNext: number[]) => {
   let str = `M${X[0]},${Y[0]}`;
 
   for (let i = 0; i < X.length - 1; i++) {
@@ -51,7 +51,7 @@ const createPath = (X: number[], Y: number[], YNext: number[]) => {
     2---------->3
  */
 
-const createVerticalPath = (X: number[], XNext: number[], Y: number[]) => {
+export const createVerticalPath = (X: number[], XNext: number[], Y: number[]) => {
   let str = `M${X[0]},${Y[0]}`;
 
   for (let i = 0; i < X.length - 1; i++) {
@@ -68,5 +68,3 @@ const createVerticalPath = (X: number[], XNext: number[], Y: number[]) => {
 
   return str;
 };
-
-export { createCurves, createPath, createVerticalCurves, createVerticalPath };
