@@ -530,7 +530,7 @@ export class FunnelGraph {
     }
 
     if (isLayered(data) && data.subLabels) {
-      const subLabels = this.container.querySelector('.fg-labels');
+      const subLabels = this.container.querySelector('.fg-sub-labels');
       if (subLabels) subLabels.remove();
       (this.data as FunnelDataLayered).subLabels = data.subLabels;
       this.addSubLabels();
