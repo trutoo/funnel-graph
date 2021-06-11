@@ -154,7 +154,7 @@ export class FunnelGraph {
           const data = this.data as FunnelDataLayered;
           const subLabelDisplayValue =
             this.subLabelValue === 'percent'
-              ? `${twoDimPercentages[index][j]}%`
+              ? `${twoDimPercentages[index][j] || 0}%`
               : formatNumber(data.values[index][j] || 0);
           percentageList += `
             <li class="fg-label__segment-item">${subLabel}:
@@ -315,7 +315,7 @@ export class FunnelGraph {
     }
 
     const max = Math.max(...values);
-    return values.map((value) => (value === 0 ? 0 : roundPoint((value * 100) / max)));
+    return values.map((value) => (value ? roundPoint((value * 100) / max) : 0));
   }
 
   getSVG() {
@@ -522,18 +522,18 @@ export class FunnelGraph {
       redraw = true;
     }
 
-    if (data.labels) {
-      const labels = this.container.querySelector('.fg-labels');
-      if (labels) labels.remove();
-      this.data.labels = data.labels;
-      this.addLabels();
-    }
-
     if (isLayered(data) && data.subLabels) {
       const subLabels = this.container.querySelector('.fg-sub-labels');
       if (subLabels) subLabels.remove();
       (this.data as FunnelDataLayered).subLabels = data.subLabels;
       this.addSubLabels();
+    }
+
+    if (data.labels) {
+      const labels = this.container.querySelector('.fg-labels');
+      if (labels) labels.remove();
+      this.data.labels = data.labels;
+      this.addLabels();
     }
 
     if (redraw) {
